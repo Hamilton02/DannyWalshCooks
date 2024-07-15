@@ -8,17 +8,17 @@ RUN apt-get install -y git
 RUN apt-get install -y vim
 RUN apt-get install -y nginx
 
-COPY requirements.txt .
+COPY ./server/requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+COPY ./server .
 
 EXPOSE 8000
 
 # Copy entrypoint script into the image
-COPY ./docker-entrypoint.sh /
-COPY ./django_nginx.conf /etc/nginx/sites-available/
+COPY ./server/docker-entrypoint.sh /
+COPY ./server/django_nginx.conf /etc/nginx/sites-available/
 RUN ln -s /etc/nginx/sites-available/django_nginx.conf /etc/nginx/sites-enabled
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 ENTRYPOINT ["/docker-entrypoint.sh"]
