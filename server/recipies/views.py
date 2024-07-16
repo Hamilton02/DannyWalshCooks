@@ -16,7 +16,6 @@ class RecipeViews(APIView):
     search = request.GET.get('search', None)
     featured = request.GET.get('featured', None)
 
-
     if(search):
       results = Recipe.objects.filter(title__icontains = search)
       recipie_serializers = RecipieSerializer(results, many="True")
@@ -30,7 +29,7 @@ class RecipeViews(APIView):
 
       return Response(data={"recipes": recipe_data}, status=status.HTTP_200_OK)
     
-    if(featured == True):
+    if(featured == 'true'):
       results = Recipe.objects.filter(featured = True)
       recipie_serializers = RecipieSerializer(results, many="True")
 

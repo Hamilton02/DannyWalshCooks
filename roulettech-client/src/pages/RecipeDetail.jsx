@@ -11,7 +11,7 @@ const RecipeDetail = () => {
 
   useEffect(() => {
     getRecipe(setRecipe, id)
-  }, [])
+  }, [id])
 
   const mapIngredients = (ingredients) => {
     return ingredients.map((ingredient, i) => 

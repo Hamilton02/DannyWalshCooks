@@ -3,7 +3,7 @@ import { redirect, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 
 const http = axios.create({
-  baseURL: /*LIVE API URL, */  'http://localhost:8000', 
+  baseURL: 'http://3.147.127.58'  /*'http://localhost:8000' */, 
   headers: {
     "Content-type": "application/json",
   }
